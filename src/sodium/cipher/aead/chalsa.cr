@@ -68,14 +68,14 @@ module Sodium::Cipher::Aead
     end
 
     # Encrypts `src` and returns {mac, ciphertext, nonce}
-    def encrypt_detached(src, dst : Bytes? = nil, *, nonce = nil, mac : Bytes? = nil, additional = nil) : {Bytes, Bytes, Nonce}
+    def encrypt_detached_e(src, dst : Bytes? = nil, *, nonce = nil, mac : Bytes? = nil, additional = nil) : {Bytes, Bytes, Nonce}
       encrypt_detached src.to_slice, mac: mac, nonce: nonce, additional: additional
     end
 
     # Decrypts `src` and returns plaintext
     # Must supply `mac` and `nonce`
     # Must supply `additional` if supplied to #encrypt
-    def decrypt_detached(src, dst : Bytes? = nil, *, nonce = nil, mac : Bytes? = nil, additional = nil) : Bytes
+    def decrypt_detached_e(src, dst : Bytes? = nil, *, nonce = nil, mac : Bytes? = nil, additional = nil) : Bytes
       decrypt_detached src.to_slice, mac: mac, nonce: nonce, additional: additional
     end
 
